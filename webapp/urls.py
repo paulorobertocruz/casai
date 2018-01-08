@@ -21,3 +21,5 @@ urlpatterns = [
     url(r'^relatorios/', include("relatorios.urls")),
     url(r'^identidade/', include("identidade.urls")),
 ]
+
+admin.site.site_header = 'CASAI'

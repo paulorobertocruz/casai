@@ -42,11 +42,11 @@ class Acompanhate(models.Model):
 
 class EspecialidadeMedica(models.Model):
     nome = models.CharField(max_length = 255)
-    mae = models.ForeignKey("EspecialidadeMedica", null = True, blank = True)
+    subespecialidade_de = models.ForeignKey("EspecialidadeMedica", null = True, blank = True)
 
     def __str__(self):
-        if self.mae is not None:
-            return "{0} - {1}".format(self.mae, self.nome)
+        if self.subespecialidade_de is not None:
+            return "{0} - {1}".format(self.subespecialidade_de, self.nome)
         else:
             return "{0}".format(self.nome)
 

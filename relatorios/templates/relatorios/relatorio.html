@@ -1,0 +1,28 @@
+
+<style>
+    .grafico{
+        position: absolute;
+        left: 5%;
+        top: 0px;
+        width: 90%;
+        height: 90%;
+    }
+    .barra{
+        position: inherit;
+        bottom: 0px;
+        width: 10%;
+        background-color: aqua;
+    }
+</style>
+
+<div class="grafico">
+
+    <div class="barra" style="height:50%">
+        {{ocupacao_paciente.count}}
+    </div>
+    
+</div>
+
+Pacientes:{{ocupacao_paciente.count}} <br/>
+Acompanhates:{{ocupacao_acompanhate.count}} <br/>
+Transito:{{ocupacao_transito.count}} <br/>

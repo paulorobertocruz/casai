@@ -1,0 +1,33 @@
+<html>
+    <body>
+        <form>
+            nome: <input name="nome" /><br/>
+            nome da mãe: <input name="nome_mae" /><br/>
+            nome do pai: <input name="nome_pai" /><br/>
+            
+            sexo:
+            <select name="sexo">
+                <option value="">--</option>
+                <option value="M">M</option>
+                <option value="F">F</option>
+            </select><br/>
+
+            data de nascimento: <input name="data_nascimento" /><br/>
+
+            <input type="submit" value="pesquisar" />
+        </form>
+
+        <div>
+            <ul>
+                    
+            {% for usuario in usuarios %}
+                <li>
+                    {{usuario}}
+                </li>
+            {% endfor %}
+            </ul>
+            
+        </div>
+
+    </body>
+</html>

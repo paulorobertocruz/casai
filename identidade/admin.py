@@ -12,7 +12,7 @@ class InlineProntuario(admin.StackedInline):
     extra = 0
 
 class InlineHobito(admin.StackedInline):
-    model = relatorio_models.Hobito
+    model = relatorio_models.Obito
     extra = 0
 
 class InlineUsuarioAldeiado(admin.StackedInline):

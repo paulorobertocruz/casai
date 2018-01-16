@@ -17,18 +17,18 @@ admin.site.register(models.Internacao, InternacaoAdmin)
 
 admin.site.register(models.Consulta)
 admin.site.register(models.Encaminhamento)
-admin.site.register(models.Hobito)
+admin.site.register(models.Obito)
 admin.site.register(models.Regulacao)
 
-class InlineAcompanhate(admin.StackedInline):
-    model = models.Acompanhate
+class InlineAcompanhante(admin.StackedInline):
+    model = models.Acompanhante
     extra = 0
 
 class FluxoAdmin(admin.ModelAdmin):
     list_display = ("usuario__nome", "usuario__nome_mae", "tipo", "data_entrada", "data_saida")
     list_filter = ("tipo",)
-    inlines = [InlineAcompanhate]
+    inlines = [InlineAcompanhante]
 
 admin.site.register(models.Fluxo, FluxoAdmin)
 
-admin.site.register(models.Acompanhate)
+admin.site.register(models.Acompanhante)

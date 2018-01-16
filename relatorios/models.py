@@ -45,7 +45,7 @@ class Acompanhante(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fluxo = models.ForeignKey(Fluxo, on_delete=models.CASCADE)
 
-     class Meta:
+    class Meta:
         verbose_name = "Acompanhante"
         verbose_name_plural = "Acompanhantes"
 

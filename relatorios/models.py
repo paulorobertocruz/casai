@@ -7,8 +7,13 @@ from django.db import models
 class UnidadeDeSaude(models.Model):
     nome = models.CharField(max_length = 255)
 
+    class Meta:
+        verbose_name = "Unidade de Saúde"
+        verbose_name_plural = "Unidades de Saúde"
+
     def __str__(self):
         return "{0}".format(self.nome)
+
 
 class Fluxo(models.Model):
 
@@ -22,6 +27,10 @@ class Fluxo(models.Model):
     criado_em = models.DateTimeField(auto_now_add=True)
     editado_em = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = "Fluxo"
+        verbose_name_plural = "Fluxos"
+
     def __str__(self):
         return "{0} - {1} - Entrada: {2}".format(self.tipo, self.usuario, self.data_entrada)
 
@@ -32,9 +41,14 @@ class Fluxo(models.Model):
         return self.usuario.nome_mae
 
 
-class Acompanhate(models.Model):
+class Acompanhante(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fluxo = models.ForeignKey(Fluxo, on_delete=models.CASCADE)
+
+     class Meta:
+        verbose_name = "Acompanhante"
+        verbose_name_plural = "Acompanhantes"
+
 
     def __str__(self):
         return "{0} => {1}".format(self.usuario, self.fluxo)
@@ -43,6 +57,10 @@ class Acompanhate(models.Model):
 class EspecialidadeMedica(models.Model):
     nome = models.CharField(max_length = 255)
     subespecialidade_de = models.ForeignKey("EspecialidadeMedica", null = True, blank = True)
+
+    class Meta:
+        verbose_name = "Especialidade Medica"
+        verbose_name_plural = "Especialidades Medicas"
 
     def __str__(self):
         if self.subespecialidade_de is not None:
@@ -59,13 +77,13 @@ class Internacao(models.Model):
 
     criado_em = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return "{0} - {1}".format(self.usuario, self.unidade_saude)
-
     class Meta:
         verbose_name = "Internação"
         verbose_name_plural = "Internações"
 
+
+    def __str__(self):
+        return "{0} - {1}".format(self.usuario, self.unidade_saude)
 
 class EspecialidadeMedicaInternacao(models.Model):
     internacao = models.ForeignKey(Internacao, on_delete=models.CASCADE)
@@ -88,10 +106,15 @@ class Consulta(models.Model):
     relatorio = models.TextField()
     criado_em = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = "Consulta"
+        verbose_name_plural = "Consultas"
+
+
     def __str__(self):
         return "{0} - {1}".format(self.usuario, self.unidade_saude)
 
-class Hobito(models.Model):
+class Obito(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     data = models.DateTimeField()
     relatorio = models.TextField()
@@ -100,6 +123,10 @@ class Hobito(models.Model):
 
     def __str__(self):
         return "{0} - {1}".format(self.usuario, self.data)
+
+    class Meta:
+        verbose_name = "Óbito"
+        verbose_name_plural = "Óbitos"
     
 class Encaminhamento(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
@@ -107,6 +134,11 @@ class Encaminhamento(models.Model):
     relatorio = models.TextField()
 
     criado_em = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Encaminhamento"
+        verbose_name_plural = "Encaminhamentos"
+
 
     def __str__(self):
         return "{0} - {1} - {2}".format(self.usuario, self.especialidade, self.criado_em)
@@ -121,6 +153,10 @@ class Regulacao(models.Model):
     data = models.DateTimeField()
     
     criado_em = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Regulação"
+        verbose_name_plural = "Regulações"
 
     def __str__(self):
         return "{0} - {1} => {2} - {3}".format(self.usuario, self.origem, self.destino, self.data)

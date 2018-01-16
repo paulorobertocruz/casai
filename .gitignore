@@ -97,3 +97,4 @@ webapp/files/media/*
 
 */migrations/
 *.sqlite3
+static_root

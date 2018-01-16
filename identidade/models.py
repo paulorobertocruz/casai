@@ -70,6 +70,8 @@ class Usuario(models.Model):
     def __str__(self):
         return "{0} - mae: {1} ".format(self.nome, self.nome_mae)
 
+    
+
 class Prontuario(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     numero = models.IntegerField()

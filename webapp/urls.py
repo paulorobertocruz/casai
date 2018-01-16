@@ -19,7 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^relatorios/', include("relatorios.urls")),
-    url(r'^identidade/', include("identidade.urls")),
+    url(r'^identidade/', include("identidade.urls", namespace = "identidade")),
 ]
 
 admin.site.site_header = 'CASAI'

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Usuario
+from .models import Usuario, Etnia, Aldeia
 
 def usuario(request):
     template_name = "identidade/usuario.html"
@@ -9,6 +9,10 @@ def usuario(request):
     nome = request.GET.get("nome", None)
     nome_mae = request.GET.get("nome_mae", None)
     sexo = request.GET.get("sexo", None)
+    
+
+    context["etnias"] = Etnia.objects.all()
+    context["aldeias"] = Aldeia.objects.all()
     
     if sexo != "F" and sexo != "M":
         sexo = None

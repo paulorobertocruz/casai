@@ -26,7 +26,7 @@ class InlineEtniaUsuario(admin.StackedInline):
 
 class UsuarioAdmin(admin.ModelAdmin):
     list_display = ("nome", "nome_mae", "sexo", "data_nascimento")
-    list_filter = ("etniausuario__etnia", "usuarioaldeiado__aldeia",)
+    list_filter = ("sexo","etniausuario__etnia","usuarioaldeiado__aldeia__polo__distrito","usuarioaldeiado__aldeia__polo", "usuarioaldeiado__aldeia",)
     search_fields = ("nome", "nome_mae", )
     inlines = [InlineEtniaUsuario, InlineUsuarioAldeiado, InlineProntuario, InlineHobito, ]
 

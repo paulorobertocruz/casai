@@ -37,7 +37,7 @@ class Endereco(models.Model):
         return "{0}/{1}".format(self.nome, self.cidade)
 
 class Distrito(models.Model):
-    nome = models.CharField(max_length = 255)
+    nome = models.CharField(max_length = 255, unique = True)
 
     class Meta:
         verbose_name = "Distrito"
@@ -48,7 +48,7 @@ class Distrito(models.Model):
         return "DSEI: {0}".format(self.nome)
 
 class Polo(models.Model):
-    nome = models.CharField(max_length = 255)
+    nome = models.CharField(max_length = 255, unique = True)
     distrito = models.ForeignKey(Distrito, on_delete=models.SET_NULL, null = True)
 
     class Meta:
@@ -60,7 +60,7 @@ class Polo(models.Model):
         return "POLO: {0} - {1}".format(self.nome, self.distrito)
 
 class Etnia(models.Model):
-    nome = models.CharField(max_length = 255)
+    nome = models.CharField(max_length = 255, unique = True)
 
     class Meta:
         verbose_name = "Etnia"
@@ -78,6 +78,7 @@ class Aldeia(models.Model):
     class Meta:
         verbose_name = "Aldeia"
         verbose_name_plural = "Aldeias"
+        unique_together = ("nome", "etnia", "polo")
 
 
     def __str__(self):
@@ -108,7 +109,6 @@ class Usuario(models.Model):
     def __str__(self):
         return "{0} - mae: {1} ".format(self.nome, self.nome_mae)
 
-    
 
 class Prontuario(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
